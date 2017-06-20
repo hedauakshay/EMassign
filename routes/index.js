@@ -12,6 +12,13 @@ exports.getMsg = function(req, res){
 	res.send(json_responses);
 }
 
+exports.getDate = function(req, res){
+	var r = new Date().toGMTString();
+	var cur = new Date().toLocaleString();
+	json_responses = {"statusCode" : 200, "gmt":r,"cur":cur};
+	res.send(json_responses);
+}
+
 exports.calc = function(req, res){
 	console.log(req.body);
 	var n1 = req.body.num1;

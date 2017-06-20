@@ -60,7 +60,14 @@ app.controller('myCtrl', ['$scope','$http', function($scope,$http) {
 	}
 	$scope.getTime = function(){
 		console.log("Inside controller getTime");
-
-		alert(new Date().toGMTString());
+		$http({
+			method:"GET",
+			url:'/getDate'
+			}).then(function successCallback(res) {
+				console.log(res);
+				alert("GMT : "+res.data.gmt+"\nCurrent Date: "+res.data.cur);
+			}, function errorCallback(err) {
+					console.log(err);
+			});
 	}
 }]);
